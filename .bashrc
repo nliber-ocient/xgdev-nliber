@@ -131,9 +131,3 @@ alias xgsrc='cd $XGSRC_PATH'
 export NVM_DIR="/home/user/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-set -o vi
-export FCEDIT=vi
-export EDITOR="${FCEDIT}"
-export VISUAL="${FCEDIT}"
-
-export GREP_OPTIONS="--color"

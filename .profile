@@ -19,3 +19,9 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
+nliberprofile="${HOME}/.nliber_profile"
+if [[ -r "${nliberprofile}" ]]
+then
+    source "${nliberprofile}"
+fi
+unset nliberprofile
