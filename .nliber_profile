@@ -1,0 +1,23 @@
+export HISTSIZE="2147483647"
+export HISTFILESIZE="${HISTSIZE}"
+export HISTCONTROL="ignoredups"
+export HISTTIMEFORMAT=""
+
+set -o vi
+export FCEDIT="vi"
+export EDITOR="${FCEDIT}"
+export VISUAL="${FCEDIT}"
+
+export CLICOLOR=auto
+export GCC_COLORS=auto
+export GREP_COLOR=auto
+export GZIP="--best"
+
+
+amplxevars="/opt/intel/vtune_amplifier_xe_2017.4.0.518798/amplxe-vars.sh"
+if [[ -r "${amplxevars}" ]]
+then
+    source "${amplxevars}"
+fi
+unset amplxevars
+
