@@ -20,4 +20,19 @@ then
     source "${amplxevars}"
 fi
 unset amplxevars
+jobs()
+{
+    command jobs -l "${@}"
+}
+export -f jobs
+
+if [[ -x /usr/bin/rlwrap ]]
+then
+    jdbc()
+    {(
+        cd /Workspace/xgsrc/xgjdbc &&
+        /usr/bin/rlwrap --always-readline --histsize 2147483647 --history-filename "${HOME}/.xgjdbc_ocient_history" ./ocient "${@}"
+    )}
+    export -f jdbc
+fi
 
