@@ -36,3 +36,10 @@ then
     export -f jdbc
 fi
 
+rolehostd()
+{(
+    cd /Workspace/xgsrc/utilities/configgen &&
+    ../../rolehostd/build/rolehostd -c sql0.conf --override system.bin "${@}"
+)}
+export -f rolehostd
+
