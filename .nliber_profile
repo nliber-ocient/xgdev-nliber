@@ -20,6 +20,7 @@ then
     source "${amplxevars}"
 fi
 unset amplxevars
+
 jobs()
 {
     command jobs -l "${@}"
@@ -38,14 +39,15 @@ fi
 
 rolehostd()
 {(
-    cd /Workspace/xgsrc/utilities/configgen &&
-    ../../rolehostd/build/rolehostd -c sql0.conf --override system.bin "${@}"
+    cd /Workspace/xgsrc/utilities/configgen/build &&
+    /Workspace/xgsrc/rolehostd/build/rolehostd --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
 )}
 export -f rolehostd
 
 gdbrolehostd()
 {(
-    cd /Workspace/xgsrc/utilities/configgen &&
-    gdb --args ../../rolehostd/build/rolehostd -c sql0.conf --override system.bin "${@}"
+    cd /Workspace/xgsrc/utilities/configgen/build &&
+    gdb --args /Workspace/xgsrc/rolehostd/build/rolehostd --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
 )}
 export -f gdbrolehostd
+
