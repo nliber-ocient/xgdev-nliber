@@ -43,3 +43,9 @@ rolehostd()
 )}
 export -f rolehostd
 
+gdbrolehostd()
+{(
+    cd /Workspace/xgsrc/utilities/configgen &&
+    gdb --args ../../rolehostd/build/rolehostd -c sql0.conf --override system.bin "${@}"
+)}
+export -f gdbrolehostd
