@@ -13,6 +13,10 @@ export GCC_COLORS=auto
 export GREP_COLOR=auto
 export GZIP="--best"
 
+export CDPATH="\
+:${HOME}\
+:/Workspace/xgsrc\
+"
 
 amplxevars="/opt/intel/vtune_amplifier_xe_2017.4.0.518798/amplxe-vars.sh"
 if [[ -r "${amplxevars}" ]]
