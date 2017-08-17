@@ -16,6 +16,7 @@ export GZIP="--best"
 export CDPATH="\
 :${HOME}\
 :/Workspace/xgsrc\
+:/Workspace/\
 "
 
 amplxevars="/opt/intel/vtune_amplifier_xe_2017.4.0.518798/amplxe-vars.sh"
