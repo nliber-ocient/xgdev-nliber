@@ -1,6 +1,6 @@
 set history save on
 set history size unlimited
 
-layout split
+layout src
 focus cmd
 
