@@ -50,14 +50,26 @@ fi
 rolehostd()
 {(
     cd /Workspace/xgsrc/utilities/configgen/build &&
-    /Workspace/xgsrc/rolehostd/build/rolehostd --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
+    rolehostd_root="../../../rolehostd" &&
+    ubsan_supp="${rolehostd_root}/ubsan.supp" &&
+    if [[ -r "${ubsan_supp}" ]]
+    then
+        export UBSAN_OPTIONS="${UBSAN_OPTIONS-"suppressions=${ubsan_supp}"}"
+    fi &&
+    "${rolehostd_root}/build/rolehostd" --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
 )}
 export -f rolehostd
 
 gdbrolehostd()
 {(
     cd /Workspace/xgsrc/utilities/configgen/build &&
-    gdb --args /Workspace/xgsrc/rolehostd/build/rolehostd --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
+    rolehostd_root="../../../rolehostd" &&
+    ubsan_supp="${rolehostd_root}/ubsan.supp" &&
+    if [[ -r "${ubsan_supp}" ]]
+    then
+        export UBSAN_OPTIONS="${UBSAN_OPTIONS-"suppressions=${ubsan_supp}"}"
+    fi &&
+    gdb --args "${rolehostd_root}/build/rolehostd" --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
 )}
 export -f gdbrolehostd
 
