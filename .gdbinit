@@ -6,3 +6,5 @@ add-auto-load-safe-path /Workspace/xgsrc/toolchain/gcc/stage-7.1.0/bin/lib64/lib
 layout src
 focus cmd
 
+set logging on
+
