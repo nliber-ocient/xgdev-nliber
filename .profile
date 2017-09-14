@@ -25,3 +25,5 @@ then
     source "${nliberprofile}"
 fi
 unset nliberprofile
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
