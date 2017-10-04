@@ -16,11 +16,12 @@ export CDPATH="\
 :${HOME}\
 :/Workspace/xgsrc\
 :/Workspace/\
+:/usr/local/include\
 "
 
 if [[ -x /usr/bin/bear ]]
 then
-    export MAKE="bear make"
+    export MAKE="bear -a make"
 fi
 
 amplxevars="/opt/intel/vtune_amplifier_xe_2017.4.0.518798/amplxe-vars.sh"
