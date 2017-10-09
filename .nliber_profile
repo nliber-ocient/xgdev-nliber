@@ -22,6 +22,7 @@ export CDPATH="\
 if [[ -x /usr/bin/bear ]]
 then
     export MAKE="bear -a make"
+    alias make="${MAKE}"
 fi
 
 amplxevars="/opt/intel/vtune_amplifier_xe_2017.4.0.518798/amplxe-vars.sh"
