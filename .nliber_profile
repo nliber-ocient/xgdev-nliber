@@ -12,6 +12,11 @@ export CLICOLOR=auto
 export GCC_COLORS=auto
 export GZIP="--best"
 
+export CCACHE_LOGFILE="ccache.log"
+
+export DISTCC_VERBOSE="1"
+export DISTCC_LOG="distcc.log"
+
 export CDPATH="\
 :${HOME}\
 :/Workspace/xgsrc\
