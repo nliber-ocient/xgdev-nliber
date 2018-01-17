@@ -47,35 +47,37 @@ if [[ -x /usr/bin/rlwrap ]]
 then
     jdbc()
     {(
-        cd /Workspace/xgsrc/xgjdbc &&
-        /usr/bin/rlwrap --always-readline --histsize 2147483647 --history-filename "${HOME}/.xgjdbc_ocient_history" ./ocient "${@}"
+        XGSRC_PATH="${XGSRC_PATH:-"/Workspace/xgsrc"}"
+        cd "${XGSRC_PATH}/xgjdbc" &&
+        /usr/bin/rlwrap --always-readline --case-insensitive --file="jdbc_completions" --histsize 2147483647 --history-filename "${HOME}/.xgjdbc_ocient_history" ./ocient "${@}"
     )}
     export -f jdbc
 fi
 
 rolehostd()
 {(
-    cd /Workspace/xgsrc/utilities/configgen/build &&
-    rolehostd_root="../../../rolehostd" &&
-    ubsan_supp="${rolehostd_root}/ubsan.supp" &&
+    
+    XGSRC_PATH="${XGSRC_PATH:-"/Workspace/xgsrc"}"
+    cd "${XGSRC_PATH}/utilities/configgen/build" &&
+    ubsan_supp="${XGSRC_PATH}/rolehostd/rolehostd-ubsan.supp" &&
     if [[ -r "${ubsan_supp}" ]]
     then
         export UBSAN_OPTIONS="${UBSAN_OPTIONS-"suppressions=${ubsan_supp}"}"
     fi &&
-    "${rolehostd_root}/build/rolehostd" --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
+    "${XGSRC_PATH}/rolehostd/build/rolehostd" --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
 )}
 export -f rolehostd
 
 gdbrolehostd()
 {(
-    cd /Workspace/xgsrc/utilities/configgen/build &&
-    rolehostd_root="../../../rolehostd" &&
-    ubsan_supp="${rolehostd_root}/ubsan.supp" &&
+    XGSRC_PATH="${XGSRC_PATH:-"/Workspace/xgsrc"}"
+    cd "${XGSRC_PATH}/utilities/configgen/build" &&
+    ubsan_supp="${XGSRC_PATH}/rolehostd/rolehostd-ubsan.supp" &&
     if [[ -r "${ubsan_supp}" ]]
     then
         export UBSAN_OPTIONS="${UBSAN_OPTIONS-"suppressions=${ubsan_supp}"}"
     fi &&
-    gdb --args "${rolehostd_root}/build/rolehostd" --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
+    gdb --args "${XGSRC_PATH}/rolehostd/build/rolehostd" --conf sql0.conf --log-file sql0.log --override system.bin "${@}"
 )}
 export -f gdbrolehostd
 
