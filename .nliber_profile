@@ -81,3 +81,15 @@ gdbrolehostd()
 )}
 export -f gdbrolehostd
 
+unalias xgsrc 2> /dev/null
+xgsrc()
+{
+    if [[ "${#}" == "0" ]]
+    then
+        pushd "${XGSRC_PATH:-"/Workspace/xgsrc"}"
+    else
+        (cd "${XGSRC_PATH:-"/Workspace/xgsrc"}" && "${@}")
+    fi
+}
+export -f xgsrc
+
