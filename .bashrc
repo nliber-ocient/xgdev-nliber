@@ -126,7 +126,7 @@ alias xgweb='cd $XGWEBUI_PATH'
 export NODE_CONFIG_DIR="$XGWEBUI_PATH/config"
 export XG_BUILD_CAPABLE_NODE=true
 export XGSRC_PATH=/Workspace/xgsrc
-alias xgsrc='cd $XGSRC_PATH'
+#alias xgsrc='cd $XGSRC_PATH'
 
 export NVM_DIR="/home/user/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
