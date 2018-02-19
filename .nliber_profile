@@ -37,6 +37,39 @@ then
 fi
 unset amplxevars
 
+search_path()
+{
+    # default to $PATH
+    local path="${2:-"${PATH}"}"
+
+    # Is it the entire path?
+    if [[ "${1}" == "${path}" ]]
+    then
+        return 0
+    fi
+
+    # Is it the first component on the path?
+    if [[ "${path#"${1}":}" != "${path}" ]]
+    then
+        return 0
+    fi
+
+    # Is it the last component on the path?
+    if [[ "${path%:"${1}"}" != "${path}" ]]
+    then
+        return 0
+    fi
+
+    # Is it a middle component on the path?
+    if [[ "${path##*:"${1}":*}" == "" ]]
+    then
+        return 0
+    fi
+
+    return 1
+}
+export -f search_path
+
 jobs()
 {
     command jobs -l "${@}"
@@ -44,9 +77,14 @@ jobs()
 export -f jobs
 
 export GCC_ROOT="/usr/local/gcc-7.3"
-if [[ -x "${GCC_ROOT}/lib" ]]
+if [[ -x "${GCC_ROOT}/lib" ]] && ! search_path "${GCC_ROOT}/lib" "${LD_LIBRARY_PATH}"
 then
     export LD_LIBRARY_PATH+=":${GCC_ROOT}/lib"
+fi
+
+if [[ -x /opt/IPMIView ]] && ! search_path "/opt/IPMIView"
+then
+    export PATH="${PATH}:/opt/IPMIView"
 fi
 
 if [[ -x /usr/bin/rlwrap ]]
