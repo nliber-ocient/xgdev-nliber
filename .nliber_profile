@@ -43,6 +43,12 @@ jobs()
 }
 export -f jobs
 
+export GCC_ROOT="/usr/local/gcc-7.3"
+if [[ -x "${GCC_ROOT}/lib" ]]
+then
+    export LD_LIBRARY_PATH+=":${GCC_ROOT}/lib"
+fi
+
 if [[ -x /usr/bin/rlwrap ]]
 then
     jdbc()
