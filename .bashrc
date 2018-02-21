@@ -116,8 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# switch over to using the toolchain included in the repo
-. /Workspace/xgsrc/toolchain/make-env.sh nosubshell
 
 export XGWEBUI_PATH=/Workspace/xgwebui
 alias npmr="npm run-script"
@@ -127,6 +125,12 @@ export NODE_CONFIG_DIR="$XGWEBUI_PATH/config"
 export XG_BUILD_CAPABLE_NODE=true
 export XGSRC_PATH=/Workspace/xgsrc
 #alias xgsrc='cd $XGSRC_PATH'
+
+# switch over to using the toolchain included in the repo
+if "${XGSRC_PATH}"/toolchain/make-env.sh nosubshell
+then
+    source "${XGSRC_PATH}"/toolchain/make-env.sh nosubshell
+fi
 
 export NVM_DIR="/home/user/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

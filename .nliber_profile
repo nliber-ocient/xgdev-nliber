@@ -55,11 +55,12 @@ jobs()
 }
 export -f jobs
 
-export GCC_ROOT="/usr/local/gcc-7.3"
-if [[ -x "${GCC_ROOT}/lib" ]] && ! search_path "${GCC_ROOT}/lib" "${LD_LIBRARY_PATH}"
+gccroot="/usr/local/gcc-7.3"
+if [[ -x "${gccroot}/lib" ]] && ! search_path "${gccroot}/lib" "${LD_LIBRARY_PATH}"
 then
-    export LD_LIBRARY_PATH+=":${GCC_ROOT}/lib"
+    export LD_LIBRARY_PATH+=":${gccroot}/lib"
 fi
+unset gccroot
 
 if [[ -x /opt/IPMIView ]] && ! search_path "/opt/IPMIView"
 then
