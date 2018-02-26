@@ -62,6 +62,15 @@ then
 fi
 unset gccroot
 
+if [[ -x "/sbin/ip" ]]
+then
+    ip()
+    {
+        "/sbin/ip" -c "${@}"
+    }
+fi
+export -f ip
+
 if [[ -x /opt/IPMIView ]] && ! search_path "/opt/IPMIView"
 then
     export PATH="${PATH}:/opt/IPMIView"
