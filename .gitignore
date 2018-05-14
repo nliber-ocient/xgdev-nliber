@@ -1,3 +1,7 @@
+thing
+thing_debug
+thing_std
+thing_std_debug
 # Prerequisites
 *.d
 
