@@ -4,7 +4,7 @@
  * Your assignment, should you choose to accept it, is to implement
  * the shared_ptr and unique_ptr classes
  * 
- * The implementations to NOT have to be thread safe for the purposes
+ * The implementations do NOT have to be thread safe for the purposes
  * of this assignment....and you would be silly to start with making them
  * so...however if your result is thread-safe, you can take TWO extra
  * cans of La Croix from the fridge.
