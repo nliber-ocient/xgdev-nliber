@@ -20,10 +20,7 @@ export DISTCC_LOG="distcc.log"
 export CDPATH="\
 :${HOME}\
 :/Workspace/xgsrc\
-:/Workspace\
-:/Workspace/xgsrc/utilities\
-:/Workspace/xgsrc/ext\
-:/Workspace/xgsrc/toolchain\
+:/Workspace/\
 :/usr/local/include\
 "
 
