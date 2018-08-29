@@ -132,6 +132,11 @@ then
     source "${XGSRC_PATH}"/toolchain/make-env.sh nosubshell
 fi
 
+# set up PYTHONHOME
+pythonhome="$(type -p python)"
+export PYTHONHOME="${PYTHONHOME:="${pythonhome%/*/python}"}"
+unset pythonhome
+
 export NVM_DIR="/home/user/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
